@@ -235,3 +235,4 @@ Smoothed Avg Response Time → “What’s the overall pattern?”
 Together: You see both the immediate incidents and the true health trend of your app.
 
 
+
