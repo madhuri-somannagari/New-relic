@@ -196,43 +196,13 @@ unset NEW_RELIC_CONFIG_FILE
 Or stop forwarding logs by removing or disabling the LOGGING configuration in settings.py.
 
 #### Validate Data in New Relic
-Check APM dashboard for your app: `Throughput` `Error rate` `Response time`
-Confirm success rate calculation:
-```
-Success rate = 100% − Error rate
-```
-#### Response Time vs. Throughput
-****X-axis (horizontal)**** → Throughput = requests per minute (or second), basically traffic volume.
-****Y-axis (vertical)**** → Response time = how long it takes to serve each request.
-You’ll see two curves here: Avg Response Time and Smoothed Avg Response Time.
-****Horizontal line is good**** If your app scales well, response time will stay flat as throughput increases. This means your servers, database, and code handle extra load without slowing down.
-Example:
-- At 100 requests/min, average response time = 200 ms.
-- At 1,000 requests/min, average response time = 210 ms (only 10 ms difference).
-- That’s horizontal, so the app scales well.
-****It is bad**** if response time rises sharply with throughput, the app struggles to handle more requests. This could mean CPU saturation, DB bottlenecks, too few workers, or network delays.
-Example:
-- At 100 requests/min → 200 ms.
-- At 500 requests/min → 800 ms.
-- At 1,000 requests/min → 3 secs.
-#### Avg Response Time
-Shows the exact average request time for each time bucket (like “per minute”).
-Purpose: Detect short-term spikes or dips immediately.
-Example:
-At 10:02 AM:
-•	8 requests finish in 200 ms
-•	2 requests finish in 4,000 ms
-Raw average = ~960 ms — the line shoots up right there.
-#### Smoothed Avg Response Time
-Averages multiple time buckets together to “smooth” out noise.
-Purpose: Reveal long-term performance trends.
-Example:
-If surrounding minutes are all ~200 ms and just one minute hits 960 ms, smoothed avg might only rise to ~300 ms — keeping the graph stable.
+Check APM dashboard for application. Review key metrics such as `Throughput` `Error rate` `Response time`. Based on these, create custom dashboards as needed to highlight the most relevant insights.
 
-###### Why New Relic uses both
-Avg Response Time → “What’s happening right now?”
-Smoothed Avg Response Time → “What’s the overall pattern?”
-Together: You see both the immediate incidents and the true health trend of your app.
+
+
+
+
+
 
 
 
